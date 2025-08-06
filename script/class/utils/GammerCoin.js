@@ -1,7 +1,7 @@
 import {Element} from "../abstract/Element.js";
 
 export class GammerCoin extends Element {
-    #coin = 9;
+    #coin = 0;
 
     constructor() {
         super(
@@ -20,7 +20,7 @@ export class GammerCoin extends Element {
             : this._getImage('coin');
 
         return `
-            <div style="position: absolute; top: 60px; right: 10px; display: flex; align-items: center;  padding-left: 5px; padding-right: 5px; background-color: rgba(0,0,0,0.56); border-radius: 50px">
+            <div style="position: absolute; top: 60px; right: 10px; display: flex; align-items: center;  padding-left: 5px; padding-right: 5px; background-color: rgba(0,0,0,0.56); border-radius: 50px" id="${this._getId()}">
                 <div style="width: 40px; height: 40px;">
                     <img src="${coinImage}" alt="Coin" style="width: 100%; height: 100%;">
                 </div>
@@ -38,6 +38,20 @@ export class GammerCoin extends Element {
     }
     getCoin() {
         return this.#coin;
+    }
+
+    render() {
+        const element = document.getElementById(this._getId());
+        if (element) {
+            const img = element.querySelector('img');
+            if (img) {
+                img.src = this._getImage(this.#coin === 0 ? 'coin_silver' : 'coin');
+            }
+            const span = element.querySelector('span');
+            if (span) {
+                span.textContent = this.#coin;
+            }
+        }
     }
 
 

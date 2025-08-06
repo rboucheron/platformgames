@@ -5,6 +5,7 @@ export class Element {
         y: 0,
         x: 0,
     };
+    #type = 'element';
     #id = `element-${Math.random().toString(36).substring(2, 9)}`;
 
     constructor(properties) {
@@ -34,6 +35,14 @@ export class Element {
 
     _setPosition(position) {
         this.#position = position;
+    }
+
+    _setType(type) {
+        this.#type = type;
+    }
+
+    _getType() {
+        return this.#type;
     }
 
     _getElement() {

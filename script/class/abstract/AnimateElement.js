@@ -75,6 +75,20 @@ export class AnimateElement extends Element {
         `;
     }
 
+    async _makeHidden() {
+        const element = document.getElementById(this._getId());
+        if (element) {
+            element.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            element.style.transform = 'translateY(-20px)';
+            element.style.opacity = '0';
+
+            setTimeout(() => {
+                element.style.display = 'none';
+            }, 100);
+        }
+    }
+
+
     _getImageWithAnimation(nameA, nameB) {
         const imgId = `img-${this._getId()}`;
         const initialSrc = this._getImage(nameA);

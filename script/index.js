@@ -36,9 +36,10 @@ const coins = Array.from({ length: 10 }, (_, i) => {
             y: 29,
             x: 400 + i * 20
         },
+        gammerCoin: gammerCoin
     });
 });
-const gammerCollision = new GammerCollision([fly, snail])
+const gammerCollision = new GammerCollision([fly, snail, ...coins])
 const gammer = new Gammer({color:'green', collision: gammerCollision});
 
 const startGame = () => {

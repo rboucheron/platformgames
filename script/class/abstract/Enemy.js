@@ -7,7 +7,7 @@ export class Enemy extends AnimateElement {
 
     constructor(properties) {
         const {images, path, position, endPosition, speed} = properties;
-        super({images, path, position, endPosition, speed});
+        super({images, path, position, endPosition, speed})._setType('enemy');
         this.#damageToGammer = properties.damageToGammer || this.#damageToGammer;
         this.#gammerLife = properties.gammerLife;
     }

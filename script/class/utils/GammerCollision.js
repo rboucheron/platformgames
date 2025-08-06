@@ -16,7 +16,7 @@ export class GammerCollision {
         const element = document.getElementById(elementId);
         if (!element) {
             console.warn(`Element with ID "${elementId}" not found.`);
-            return { left: 0, right: 0, top: 0, bottom: 0 };
+            return {left: 0, right: 0, top: 0, bottom: 0};
         }
 
         const rect = element.getBoundingClientRect();
@@ -36,6 +36,14 @@ export class GammerCollision {
 
             if (GammerCollision.isColliding(gammerBox, elBox)) {
                 el.onCollision();
+                if (elBox._getType() === 'enemy') {
+                    gammer.setAction('hit');
+                    gammer.render();
+
+
+                }
+
+
             }
         }
     }
