@@ -49,7 +49,7 @@ export class Element {
         return ''
     }
 
-    _onCollision() {
+    onCollision() {
 
     }
 }

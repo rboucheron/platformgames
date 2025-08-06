@@ -36,15 +36,12 @@ export class GammerCollision {
 
             if (GammerCollision.isColliding(gammerBox, elBox)) {
                 el.onCollision();
-                if (elBox._getType() === 'enemy') {
-                    gammer.setAction('hit');
-                    gammer.render();
-
-
+                if (el._getType() === 'enemy') {
+                    gammer.onDamageTaken();
                 }
-
 
             }
         }
     }
+
 }

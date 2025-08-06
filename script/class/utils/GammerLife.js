@@ -24,38 +24,27 @@ export class GammerLife extends Element {
         return this.#life;
     }
 
-    getElement() {
+    _getAllHearts() {
         const hearts = [];
-        const emptyHearts = [];
-
-        for (let i = 0; i < this.#life; i++) {
-            hearts.push(`
-                <div style="width: 40px;">
-                    <img src="${super._getImage('heart')}" alt="Life" style="width: 100%; height: 100%;">
-                </div>
-            `);
+        for (let i = 0; i < this.#maxLife; i++) {
+            const src = i < this.#life ? this._getImage('heart') : this._getImage('heart_empty');
+            const alt = i < this.#life ? 'Heart' : 'Empty Heart';
+            hearts.push(`<img src="${src}" alt="${alt}" style="width: 35px; height: 35px; margin-right: 5px;">`);
         }
+        return hearts.join('');
+    }
 
-        for (let i = this.#life; i < this.#maxLife; i++) {
-            emptyHearts.push(`
-                <div style="width: 40px;">
-                    <img src="${super._getImage('heart_empty')}" alt="Empty Life" style="width: 100%; height: 100%;">
-                </div>
-            `);
-        }
-
+    getElement() {
         return `
-            <div style="position: absolute; top: 10px; right: 10px; display: flex; " id="${this._getId()}">
-                ${hearts.join('')}
-                ${emptyHearts.join('')}
+            <div style="position: absolute; top: 10px; right: 10px; display: flex;" id="${this._getId()}">
+                ${this._getAllHearts()}
             </div>
         `;
     }
 
     render() {
-        const element = document.getElementById(this._getId());
-        if (element) {
-            element.innerHTML = this.getElement();
-        }
+        let existing = document.getElementById(this._getId());
+        existing.innerHTML = this._getAllHearts();
     }
+
 }

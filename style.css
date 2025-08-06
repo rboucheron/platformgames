@@ -1,9 +1,10 @@
 #root {
     background-color: aliceblue;
-    width: 100%;
+    width:  700px;
     height: 500px; /* fixe */
     /* ou min-height: 200px; */
     margin: 0 auto;
     position: relative;
     display: block;
+    overflow: hidden; /* pour éviter les débordements */
 }

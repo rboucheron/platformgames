@@ -37,7 +37,7 @@ export class AnimateElement extends Element {
                 bottom: ${this._getPosition().y}px;
                 left: ${this._getPosition().x}px;
                 width: 50px;
-                height: 50px;
+             
                 animation: move-${this._getId()} ${duration}s linear infinite alternate;
             ">
                 ${imgHtml}
